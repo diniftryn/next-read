@@ -22,12 +22,12 @@ export function CardEntryDropdown({ entryId, entry }: CardEntryDropdownProps) {
           <DotsVerticalIcon />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem>
-            <Link href={`/entries/${entryId}/update`}>Edit</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <AlertDialogTrigger>Delete</AlertDialogTrigger>
-          </DropdownMenuItem>
+          <Link href={`/entries/${entryId}/update`}>
+            <DropdownMenuItem>Edit</DropdownMenuItem>
+          </Link>
+          <AlertDialogTrigger className="w-full">
+            <DropdownMenuItem>Delete</DropdownMenuItem>
+          </AlertDialogTrigger>
         </DropdownMenuContent>
       </DropdownMenu>
 
