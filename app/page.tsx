@@ -1,17 +1,14 @@
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import Link from "next/link";
-import { getAllEntries } from "@/lib/actions/entry.actions";
-import { IEntry } from "@/lib/database/models/entry.model";
-import { TimerTab } from "@/components/TimerTab";
-import { CardEntry } from "@/components/CardEntry";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Collection from "@/components/Collection";
+import { TimerTab } from "@/components/TimerTab";
 import { Quote } from "@/components/Quote";
 
 export default async function Home() {
-  const entries = await getAllEntries();
-
   return (
     <main className="text-center">
       <Header />
@@ -34,12 +31,7 @@ export default async function Home() {
         </Button>
 
         <div className="grid grid-flow-row auto-cols-min lg:grid-cols-2 grid-cols-1">
-          {entries?.data
-            ? entries.data.map((entry: IEntry) => {
-                // return <CardEntry {...entry} />;
-                return <CardEntry entry={entry} />;
-              })
-            : ""}
+          <Collection />
         </div>
       </div>
 
