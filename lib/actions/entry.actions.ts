@@ -17,6 +17,7 @@ CreateEntryParams) {
     await connectToDatabase();
 
     const newEntry = await Entry.create({ ...entry });
+    if (newEntry) revalidatePath("/");
 
     return JSON.parse(JSON.stringify(newEntry));
   } catch (error) {
@@ -51,7 +52,7 @@ export async function updateEntry({ entry, path }: UpdateEntryParams) {
     }
 
     const updatedEntry = await Entry.findByIdAndUpdate(entry._id, { ...entry }, { new: true });
-    revalidatePath(path);
+    if (updatedEntry) revalidatePath(path);
 
     return JSON.parse(JSON.stringify(updatedEntry));
   } catch (error) {
